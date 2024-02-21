@@ -10,10 +10,12 @@ const Messages = () => {
 	const lastMessageRef = useRef();
 
 	useEffect(() => {
+		console.log("Received messages:", messages);
+		console.log("Authenticated user:", authUser);
 		setTimeout(() => {
 			lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
 		}, 100);
-	}, [messages]);
+	  }, [messages, authUser]);
 
 	return (
 		<div className='px-4 flex-1 overflow-auto'>
