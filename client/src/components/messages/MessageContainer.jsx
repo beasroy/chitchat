@@ -7,6 +7,7 @@ import { TiMessages } from "react-icons/ti";
 
 const MessageContainer = () => {
 	const { selectedConversation, setSelectedConversation } = useConversation();
+	const { authUser } = useAuthContext();
 
 	useEffect(() => {
 		// cleanup function (unmounts)
@@ -20,8 +21,13 @@ const MessageContainer = () => {
 			):(
 				<>
 				{/* Header */}
+				<div className="flex flex-row justify-between">
 				<div className='bg-white/75 px-4 py-2 mb-2'>
 					<span className='label-text'>To:</span> <span className='text-gray-900 font-bold'>{selectedConversation.fullName}</span>
+				</div>
+				<div className="w-12 rounded-full">
+					<img src={authUser.profilePic}  />
+				</div>
 				</div>
 
 				<Messages />
