@@ -3,11 +3,12 @@ import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
-
+import { useAuthContext } from "../../context/AuthContext";
 const Messages = () => {
 	const { messages, loading } = useGetMessages();
 	useListenMessages();
 	const lastMessageRef = useRef();
+	const {authUser} = useAuthContext();
 
 	useEffect(() => {
 		console.log("Received messages:", messages);
